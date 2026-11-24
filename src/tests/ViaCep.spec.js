@@ -54,5 +54,7 @@ export default function () {
       res.status === OK && res.json('cep').replace('-', '') === cep
   });
 
-  sleep(1);
+  // Pausa entre requisições: o ViaCEP bloqueia IPs com volume muito alto
+  // (no GitHub Actions, com sleep(1), as conexões passaram a dar timeout).
+  sleep(5);
 }
